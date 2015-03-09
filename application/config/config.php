@@ -8,7 +8,7 @@ $config['menu_choices'] = array(
     'menudata' => array(
         array('name' => "Home", 'link' => '/'),
 	array('name' => "Alphabetical", 'link' => '/alphabetical'),
-        array('name' => "Forbes", 'link' => '/ranking'),
+        array('name' => "Court Fees", 'link' => '/ranking'),
         array('name' => "Admin", 'link' => '/admin'),
         array('name' => "About", 'link' => '/about'),
         )
