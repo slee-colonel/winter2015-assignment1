@@ -90,15 +90,15 @@ switch (ENVIRONMENT)
 }
 
 /*
- *---------------------------------------------------------------
+ * ---------------------------------------------------------------
  * SYSTEM FOLDER NAME
- *---------------------------------------------------------------
+ * ---------------------------------------------------------------
  *
  * This variable must contain the name of your "system" folder.
  * Include the path if the folder is not in the same directory
  * as this file.
  */
-	$system_path = '../system3';
+$system_path = '../system3';
 
 /*
  *---------------------------------------------------------------
