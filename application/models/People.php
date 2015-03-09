@@ -6,11 +6,11 @@
  *
  * @author jim
  */
-class Quotes extends MY_Model {
+class People extends MY_Model {
 
     // Constructor
     public function __construct() {
-       parent::__construct('quotes', 'id');	
+       parent::__construct('people', 'id');	
     }
     
     // retrieve the most recently added quote

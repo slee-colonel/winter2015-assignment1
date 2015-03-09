@@ -22,13 +22,10 @@ class Welcome extends Application {
     {
 	$this->data['pagebody'] = 'justone';    // this is the view we want shown
 	
-        // randomize the choice of homepage quote
-        $choice = rand(1,$this->quotes->size());
-        $this->data = array_merge($this->data, (array) $this->quotes->get($choice));
+        // randomize the choice of homepage person
+        $choice = rand(1,$this->people->size());
+        $this->data = array_merge($this->data, (array) $this->people->get($choice));
         
-        $this->data['average'] = ($this->data['vote_count'] > 0) ? 
-            ($this->data['vote_total'] / $this->data['vote_count']) : 0;
-        $this->caboose->needed('jrating','hollywood');
 	$this->render();
     }
 
