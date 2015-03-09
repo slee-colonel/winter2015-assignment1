@@ -34,10 +34,10 @@ CREATE TABLE IF NOT EXISTS `people` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 INSERT INTO `people` (`id`, `who`, `mug`) VALUES
-(1, 'Scrooge McDuck', 'scrooge-mcduck-150x150.jpg'),
-(2, 'Bruce Wayne', 'bruce-wayne-150x150.jpg'),
-(3, 'Tony Stark', 'tony-stark-150x150.jpg'),
-(4, 'Richie Rich', 'richie-rich-150x150.jpg');
+(1, 'Scrooge McDuck', 'scrooge-mcduck.jpg'),
+(2, 'Bruce Wayne', 'bruce-wayne.jpg'),
+(3, 'Tony Stark', 'tony-stark.jpg'),
+(4, 'Richie Rich', 'richie-rich.jpg');
 
 --
 -- Table structure for table `articles`
