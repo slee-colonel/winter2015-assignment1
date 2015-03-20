@@ -13,9 +13,10 @@ class People extends MY_Model {
        parent::__construct('people', 'id');	
     }
     
-    // retrieve the most recently added quote
-    function last() {
-	$key = $this->highest();
-	return $this->get($key);
+    // Return all rich people in alphabetical order
+    function invertall() {
+        $this->db->order_by($this->_keyField, 'desc');
+        $query = $this->db->get($this->_tableName);
+        return $query->result();
     }
 }

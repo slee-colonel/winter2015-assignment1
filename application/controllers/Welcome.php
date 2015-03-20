@@ -34,8 +34,9 @@ class Welcome extends Application {
         // (last ID in articles table)
         $choice = $this->articles->highest();
         $this->data['id'] = $choice;
-        $this->data['who'] = $this->articles->get($choice)->who;
+        $this->data['who'] = $this->articles->get($choice)->who;        
         $this->data['articletitle'] = $this->articles->get($choice)->title;
+        $this->data['owed'] = $this->articles->get($choice)->owed;
         $this->data['articletext'] = $this->articles->get($choice)->text;
         
         $this->data['mug'] = 

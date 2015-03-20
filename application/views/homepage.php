@@ -7,6 +7,7 @@
             </figure>
             <div style="text-align: left">
                 <h2>{articletitle}</h2>
+                <h3>Court Costs: ${owed}</h3>
                 <p>{articletext}</p>
                 <p>
                 Lorem ipsum dolor sit amet, an vix elitr consul omittantur, vis probo assum oratio cu. Mea impedit tibique accommodare an. Esse vituperatoribus an nec, at alii tamquam adipisci pri. Usu sint munere at, blandit pericula liberavisse id per, vix no paulo utroque. Usu ferri delicatissimi eu, maiorum perpetua repudiandae pro ei. Ne ipsum altera pro, exerci nullam delenit eu vix. Ad unum etiam reformidans eos, brute fierent ex qui.                
