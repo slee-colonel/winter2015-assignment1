@@ -13,9 +13,10 @@ class Articles extends MY_Model {
        parent::__construct('articles', 'id');	
     }
     
-    // retrieve the most recently added quote
-    function last() {
-	$key = $this->highest();
-	return $this->get($key);
+    // Return all article records as an array of objects in reverse order
+    function invertall() {
+        $this->db->order_by($this->_keyField, 'desc');
+        $query = $this->db->get($this->_tableName);
+        return $query->result();
     }
 }

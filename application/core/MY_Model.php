@@ -89,12 +89,6 @@ interface Active_record {
      * @return array(object) All the records in the table.
      */
     function all();
-    
-    /**
-     * Retrieve all DB records.
-     * @return array(object) All the records in the table.
-     */
-    function invertall();
 
     /**
      * Retrieve all DB records, but as a result set.
@@ -236,13 +230,6 @@ class MY_Model extends CI_Model implements Active_Record {
     // Return all records as an array of objects
     function all() {
         $this->db->order_by($this->_keyField, 'asc');
-        $query = $this->db->get($this->_tableName);
-        return $query->result();
-    }
-
-    // Return all records as an array of objects
-    function invertall() {
-        $this->db->order_by($this->_keyField, 'desc');
         $query = $this->db->get($this->_tableName);
         return $query->result();
     }
