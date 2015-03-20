@@ -32,12 +32,14 @@ class Welcome extends Application {
         
         // get the choice of homepage person, by most recent article
         // (last ID in articles table)
-        $choice = $this->people->highest();
+        $choice = $this->articles->highest();
         $this->data['id'] = $choice;
-        $this->data['mug'] = $this->people->get($choice)->mug;
-        $this->data['who'] = $this->people->get($choice)->who;
+        $this->data['who'] = $this->articles->get($choice)->who;
         $this->data['articletitle'] = $this->articles->get($choice)->title;
-        $this->data['articletext'] = $this->articles->get($choice)->text;         
+        $this->data['articletext'] = $this->articles->get($choice)->text;
+        
+        $this->data['mug'] = 
+            $this->people->some('who', $this->data['who'])[0]->mug;
         
 	$this->render();
     }

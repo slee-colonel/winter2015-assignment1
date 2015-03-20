@@ -25,14 +25,17 @@ class Viewer extends Application {
 	$this->render();
     }
 
-    // method to display just a single quote
-    function quote($id)
+    // method to display just a single article
+    function article($id)
     {
 	$this->data['pagebody'] = 'justone';    // this is the view we want shown
-	$this->data = array_merge($this->data, (array) $this->quotes->get($id));
-        $this->data['average'] = ($this->data['vote_count'] > 0) ? 
-            ($this->data['vote_total'] / $this->data['vote_count']) : 0;
-        $this->caboose->needed('jrating','hollywood');
+        $this->data['id'] = $id;
+        $this->data['who'] = $this->articles->get($id)->who;
+        $this->data['articletitle'] = $this->articles->get($id)->title;
+        $this->data['articletext'] = $this->articles->get($id)->text;
+        
+        $this->data['mug'] = 
+            $this->people->some('who', $this->data['who'])[0]->mug;
 	$this->render();
     }    
 }

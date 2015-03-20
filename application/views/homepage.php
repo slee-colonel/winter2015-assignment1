@@ -1,11 +1,11 @@
 <div class="row container-fluid">
     <div>
-        <a href="/viewer/quote/{id}" class="span4 btn" style="width: 55%"> <!--change to list of articles-->             
+        <a href="/viewer/article/{id}" class="span4 btn" style="width: 55%"> <!--change to list of articles-->             
             <figure style="float: left">
                 <img src="/data/{mug}" title="{who}"/>
                 <figcaption><h4>{who}</h4></figcaption>
             </figure>
-            <div>
+            <div style="text-align: left">
                 <h2>{articletitle}</h2>
                 <p>{articletext}</p>
                 <p>
@@ -19,7 +19,7 @@
     </div>    
     <div class="pull-right" style="width: 40%">
         {articlelist}
-        <a href="/viewer/quote/{id}" class="span2 btn" style="width: 90%">
+        <a href="/viewer/article/{id}" class="span2 btn" style="width: 90%">
             <figure style="float: left">
                 <img src="/data/{mug}" title="{who}" style="float: left"
                      width="100" height="100"/>
