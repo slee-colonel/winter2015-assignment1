@@ -28,6 +28,7 @@
             </figure>
             <div>
                 <h4>{title}</h4>
+                <h5>Court Costs: ${owed}</h5>
             </div>
         </a> 
         {/articlelist}
