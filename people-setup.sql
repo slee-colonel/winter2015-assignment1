@@ -55,8 +55,9 @@ CREATE TABLE IF NOT EXISTS `articles` (
 INSERT INTO `articles` (`id`, `who`, `title`, `text`, `owed`) VALUES
 (1, 'Scrooge McDuck', 'Billionaire Found Guilty Of Child Labor', '"I fully intend to appeal this decision," said McDuck, "My nephews clearly volunteered in my endeavors."', 3600000),
 (2, 'Tony Stark', 'Stark Industries Breach Defence Contract', 'After a five-month legal battle, the Supreme Court has ruled in favor of the Department of Defense.', 1500000000),
-(3, 'Richie Rich', 'Theme Park Land Dispute In Favor Of Condor', 'In a 3-2 decision, the Supreme Court has ruled that Condor does indeed own the 500 acres of land. Rich was not available for comment.', 2000000),
-(4, 'Richie Rich', 'Theme Park Ruled Not Safe', 'The Court of Appeals has ruled that Rich was fully responsible for the injuries of Van Dough Jr. in the roller-coaster accident last month.', 4500000);
+(3, 'Richie Rich', '3-Death Car Crash Fault Of Rich', 'After extensive police investigation, Rich was found at fault for the fatal car crash last month.', 350000),
+(4, 'Richie Rich', 'Theme Park Land Dispute In Favor Of Condor', 'In a 3-2 decision, the Supreme Court has ruled that Condor does indeed own the 500 acres of land. Rich was not available for comment.', 4500000),
+(5, 'Richie Rich', 'Theme Park Ruled Not Safe', 'The Court of Appeals has ruled that Rich was fully responsible for the injuries of Van Dough Jr. in the roller-coaster accident last month.', 200000);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

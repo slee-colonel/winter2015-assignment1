@@ -1,6 +1,6 @@
 <div class="row container-fluid" style="width: 100%">
     {peoplelist}
-    <a href="/viewer/article/{id}" class="span2 btn" style="width: 93%">
+    <a href="/numofarticles/articles/{who}" class="span2 btn" style="width: 93%">
         <figure style="float: left">
             <img src="/data/{mug}" title="{who}" style="float: left"
                  width="100" height="100"/>

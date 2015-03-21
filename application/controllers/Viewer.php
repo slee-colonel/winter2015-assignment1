@@ -27,15 +27,28 @@ class Viewer extends Application {
     // method to display just a single article
     function article($id)
     {
-	$this->data['pagebody'] = 'article';    // this is the view we want shown
+        $this->data['pagebody'] = 'article';    // this is the view we want shown
         $this->data['id'] = $id;
-        $this->data['who'] = $this->articles->get($id)->who;
-        $this->data['articletitle'] = $this->articles->get($id)->title;        
-        $this->data['owed'] = $this->articles->get($id)->owed;
-        $this->data['articletext'] = $this->articles->get($id)->text;
         
-        $this->data['mug'] = 
-            $this->people->some('who', $this->data['who'])[0]->mug;
+        if ($id != -1)
+        {
+            $this->data['who'] = $this->articles->get($id)->who;
+            $this->data['articletitle'] = $this->articles->get($id)->title;        
+            $this->data['owed'] = $this->articles->get($id)->owed;
+            $this->data['articletext'] = $this->articles->get($id)->text;
+
+            $this->data['mug'] = 
+                $this->people->some('who', $this->data['who'])[0]->mug;
+        }
+        else
+        {
+            $this->data['who'] = "Nobody";
+            $this->data['articletitle'] = "No article title";
+            $this->data['owed'] = 0;
+            $this->data['articletext'] = "No article text";
+            $this->data['mug'] = NULL;
+        }
+        
 	$this->render();
     }    
 }
