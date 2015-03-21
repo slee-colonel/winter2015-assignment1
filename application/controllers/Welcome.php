@@ -23,11 +23,10 @@ class Welcome extends Application {
 	$this->data['pagebody'] = 'homepage';
         
         // list all articles by most recent first
-	$this->data['articlelist'] = $this->articles->invertall();  // added invertall function to MY_Model
-        for ($x=1; $x <= $this->articles->highest(); $x++)
-        {    
-            $this->data['articlelist'][$x-1]->mug = 
-                $this->people->some('who', $this->data['articlelist'][$x-1]->who)[0]->mug;
+	$this->data['articlelist'] = $this->articles->invert_all();  // added invertall function to MY_Model
+        foreach ($this->data['articlelist'] as $row)
+        {
+            $row->mug = $this->people->some('who', $row->who)[0]->mug;
         }
         
         // get the choice of homepage person, by most recent article
@@ -44,12 +43,6 @@ class Welcome extends Application {
         
 	$this->render();
     }
-    /*
-    function generateList()
-    {
-        for($x=0; $x <= $this->people->highest(); $x++)
-            $this->data['articlelist']->add
-    }//*/
 }
 
 /* End of file Welcome.php */

@@ -14,9 +14,32 @@ class Articles extends MY_Model {
     }
     
     // Return all article records as an array of objects in reverse order
-    function invertall() {
+    function invert_all() {
         $this->db->order_by($this->_keyField, 'desc');
         $query = $this->db->get($this->_tableName);
         return $query->result();
+    }
+    
+    function article_count($who){
+        $count = 0;
+        $this->db->order_by($this->_keyField, 'desc');
+        $query = $this->db->get($this->_tableName);
+        foreach ($query->result() as $row)
+        {
+            if($row->who == $who)
+                $count++;
+        }
+        return $count;
+    }
+    
+    function total_owed($who){
+        $owed = 0;
+        $query = $this->db->get($this->_tableName);
+        foreach ($query->result() as $row)
+        {
+            if($row->who == $who)
+                $owed += $row->owed;
+        }
+        return $owed;
     }
 }

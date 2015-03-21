@@ -21,14 +21,13 @@ class Viewer extends Application {
     function index()
     {
 	$this->data['pagebody'] = 'homepage';    // this is the view we want shown
-	$this->data['authors'] = $this->quotes->all();
 	$this->render();
     }
 
     // method to display just a single article
     function article($id)
     {
-	$this->data['pagebody'] = 'justone';    // this is the view we want shown
+	$this->data['pagebody'] = 'article';    // this is the view we want shown
         $this->data['id'] = $id;
         $this->data['who'] = $this->articles->get($id)->who;
         $this->data['articletitle'] = $this->articles->get($id)->title;        
