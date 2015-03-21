@@ -76,4 +76,11 @@ class People extends MY_Model {
         
         return $result;
     }
+    
+    function get_mug($who){
+        if ($this->people->some('who',$who) != NULL)
+            return $this->people->some('who', $who)[0]->mug;
+        else
+            return NULL;
+    }
 }

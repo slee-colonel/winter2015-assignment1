@@ -10,11 +10,11 @@
 
 <div class="row container-fluid" style="width: 100%">
     {articlelist}
-    <a href="/viewer/article/{id}" class="span2 btn" style="width: 93%">
-        <div>
-            <h4>{title}</h4>
-            <h5>Court Costs: ${owed}</h5>
-        </div>
-    </a> 
-    {/articlelist}
+        <a href="/viewer/article/{id}" class="span2 btn" style="width: 93%">
+            <div>
+                <h4>{title}</h4>
+                <h5>Court Costs: ${owed}</h5>
+            </div>
+        </a> 
+    {/articlelist}    
 </div>

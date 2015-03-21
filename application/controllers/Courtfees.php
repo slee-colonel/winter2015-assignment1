@@ -19,19 +19,10 @@ class Courtfees extends Application {
     function articles($who) {
         $this->data['pagebody'] = 'article_list';
         $this->data['who'] = $who;
-        $this->data['mug'] = $this->people->some('who', $this->data['who'])[0]->mug;
-        $this->data['sortedby'] = "Sorted By Most Court Fees Owed";
-        
+        $this->data['mug'] = $this->people->get_mug($who);
+        $this->data['sortedby'] = "Sorted By Most Court Fees Owed";        
         $this->data['articlelist'] = $this->articles->by_court_fees($who);
-        
-        if ($this->data['articlelist'] == NULL)
-        {
-            $this->data['articlelist'][0] = new stdClass();
-            $this->data['articlelist'][0]->id = -1;
-            $this->data['articlelist'][0]->title = "No articles found";
-            $this->data['articlelist'][0]->owed = 0;            
-        }            
-        
+                
         $this->render();
     }
 }
