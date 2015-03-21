@@ -17,6 +17,30 @@ class Admin extends Application {
         $this->render();
     }
     
+    function add_person(){
+        
+    }
+    
+    function edit_person($id){
+        
+    }
+    
+    function delete_person($id){
+        
+    }
+    
+    function add_article(){
+        
+    }
+    
+    function edit_article($id){
+        
+    }
+    
+    function delete_article($id){
+        
+    }
+    
     // add a new quotation
     function add() {
         $quote = $this->quotes->create();
