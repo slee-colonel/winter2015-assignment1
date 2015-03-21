@@ -11,7 +11,7 @@ $config['menu_choices'] = array(
         array('name' => "Court Fees", 'link' => '/courtfees'),
         array('name' => "# of Articles", 'link' => '/numofarticles'),
         array('name' => "Admin", 'link' => '/admin'),
-        array('name' => "About", 'link' => '/about'),
+        //array('name' => "About", 'link' => '/about'),
         )
     );
 
