@@ -10,8 +10,9 @@ class Admin extends Application {
     // displays the quotations in a minimally formatted table by ID, author,
     // mugshot file name, and actual quotation
     function index() {
-        $this->data['title'] = 'Quotations Maintenance';
-        $this->data['quotes'] = $this->quotes->all();
+        $this->data['title'] = 'The Rich People List Maintenance';
+        $this->data['people'] = $this->people->all();
+        $this->data['articles'] = $this->articles->all();
         $this->data['pagebody'] = 'admin_list';
         $this->render();
     }
