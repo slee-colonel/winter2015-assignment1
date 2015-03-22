@@ -4,7 +4,7 @@ class Admin extends Application {
 
     function __construct() {
         parent::__construct();
-        $this->load->helper(array('formfields','form','url'));        
+        $this->load->helper(array('formfields','form','url','file'));        
     }
 
     function index() {
@@ -31,8 +31,14 @@ class Admin extends Application {
         $this->data['fid'] = makeTextField('ID#', 'id', $person->id, 
             "Unique quote identifier, system-assigned", 10, 10, true); 
         $this->data['fwho'] = makeTextField('Name', 'who', $person->who);
-        $this->data['fmug'] = makeTextField('Picture', 'mug', $person->mug);
-
+        
+        //load dropdown mug options
+        $filenames = get_filenames('data/');
+        foreach ($filenames as $file){
+            $record[$file] = $file;
+        }
+        $this->data['fmug'] = form_dropdown('mug', $record, $person->mug);
+        
         // creates a submit button for form processing
         $this->data['fsubmit'] = makeSubmitButton('Process Person',
                 "Click here to validate the person's data", 'btn-success');
@@ -49,7 +55,7 @@ class Admin extends Application {
         $record->id = $this->input->post('id');
         $record->who = $this->input->post('who');
         $record->mug = $this->input->post('mug');
-        
+        echo $record->mug;
         // validation
         if (empty($record->who))
             $this->errors[] = 'You must specify a name.';

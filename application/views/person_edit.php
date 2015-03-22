@@ -2,7 +2,8 @@
     <form action="/admin/confirm_person" method="post">
         {fid}
         {fwho}
-        {fmug}
+        <div style="line-height: 220%">Mugshot<br/></div>
+        {fmug}<br/><br/>
         {fsubmit}
     </form>
 </div>
