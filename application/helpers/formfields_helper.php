@@ -22,11 +22,11 @@ if (!defined('APPPATH'))
  * @param string $explain Help text for the control
  * @param int $maxlen Maximum length of the value, characters
  * @param int $size width in ems of the input control
- * @param boolean $disabled True if non-editable
+ * @param boolean $readonly True if non-editable
  */
 if (!function_exists('makeTextField')) {
 
-    function makeTextField($label, $name, $value, $explain = "", $maxlen = 40, $size = 25, $disabled = false) {
+    function makeTextField($label, $name, $value, $explain = "", $maxlen = 40, $size = 25, $readonly = false) {
         $CI = &get_instance();
         $parms = array(
             'label' => $label,
@@ -35,7 +35,7 @@ if (!function_exists('makeTextField')) {
             'explain' => $explain,
             'maxlen' => $maxlen,
             'size' => $size,
-            'disabled' => ($disabled ? 'disabled="disabled"' : '')
+            'disabled' => ($readonly ? 'readonly' : '') // modified by Sanders Lee
         );
         return $CI->parser->parse('_fields/textfield', $parms, true);
     }
