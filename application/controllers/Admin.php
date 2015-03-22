@@ -4,7 +4,7 @@ class Admin extends Application {
 
     function __construct() {
         parent::__construct();
-        $this->load->helper('formfields');
+        $this->load->helper(array('formfields','form','url'));        
     }
 
     function index() {
@@ -58,7 +58,7 @@ class Admin extends Application {
         
         // redisplay if any errors
         if (count($this->errors) > 0) {
-            $this->present($record);
+            $this->present_person($record);
             return; // make sure we don't try to save anything
         }
 
@@ -112,8 +112,8 @@ class Admin extends Application {
         $this->data['fwho'] = makeTextField('Name', 'who', $article->who);
         $this->data['ftitle'] = makeTextField('Article Title', 'title', $article->title);
         $this->data['fowed'] = makeTextField('Court Costs ($)', 'owed', $article->owed);
-        $this->data['ftext'] = makeTextField('Article Text', 'text', $article->text,
-                "", 4096, 66, false);
+        $this->data['ftext'] = makeTextArea('Article Text', 'text', $article->text,
+                "", 4096, 66, 8, false);
 
         // creates a submit button for form processing
         $this->data['fsubmit'] = makeSubmitButton('Process Article',
@@ -145,7 +145,7 @@ class Admin extends Application {
         
         // redisplay if any errors
         if (count($this->errors) > 0) {
-            $this->present($record);
+            $this->present_article($record);
             return; // make sure we don't try to save anything
         }
 
@@ -170,8 +170,8 @@ class Admin extends Application {
                 "", 40, 25, true);
         $this->data['fowed'] = makeTextField('Court Costs ($)', 'owed', $article->owed,
                 "", 40, 25, true);
-        $this->data['ftext'] = makeTextField('Article Text', 'text', $article->text,
-                "", 4096, 66, true);
+        $this->data['ftext'] = makeTextArea('Article Text', 'text', $article->text,
+                "", 4096, 66, 8, true);
         
         // creates a submit button for form processing
         $this->data['fsubmit'] = makeSubmitButton('Confirm Deletion',
@@ -184,5 +184,54 @@ class Admin extends Application {
         $id = $this->input->post('id');
         $this->articles->delete($id);        
         redirect('/admin');
+    }
+    
+    function upload_picture($first_attempt){
+        $config['upload_path'] = './data/';
+        $config['allowed_types'] = '*'; //file type detection doesn't work in CI
+        $config['max_size'] = 100;
+        $config['max_width'] = 800; 
+        $config['max_height'] = 800;
+        $this->load->library('upload', $config);
+        
+        if (!$first_attempt){
+            $file_type_ok = false;
+            
+            // manually check file types because CI can't do it
+            if ($_FILES['userfile']['type'] == 'image/jpeg' ||
+                $_FILES['userfile']['type'] == 'image/gif' || 
+                $_FILES['userfile']['type'] == 'image/png')
+                $file_type_ok = true;
+                        
+            if (!$file_type_ok){
+                if($_FILES['userfile']['name'] == NULL)
+                    $this->data['errors'] = "No file selected for upload.";
+                else
+                    $this->data['errors'] = "File type not allowed.";
+                
+                $this->data['pagebody'] = 'picture_upload';
+            }
+            else{
+                if(!$this->upload->do_upload()){
+                    $this->data['errors'] = $this->upload->display_errors();
+                    $this->data['pagebody'] = 'picture_upload';
+                }
+                else{
+                    redirect('/admin');
+                }
+            }
+        }
+        else{
+            $this->data['errors'] = "";
+            $this->data['pagebody'] = 'picture_upload';
+        }
+        $this->render();
+    }
+    
+    function allow_file_type($ext){
+        if ($ext == '.jpg' || $ext == '.png' || $ext == '.gif')
+            return true;
+        else
+            return false;
     }
 }

@@ -18,7 +18,8 @@
         </tr>
         {/people}
     </table>
-    <a href='/admin/add_person'>Add a new rich person</a>
+    <a href='/admin/add_person'>Add a new rich person</a><br/>
+    <a class="right" href='/admin/upload_picture/1'>Upload a mugshot</a>
 </div>
 
 <div class="row container-fluid" style="width: 100%">
