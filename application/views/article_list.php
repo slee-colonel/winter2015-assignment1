@@ -1,3 +1,4 @@
+<!-- The page that lists all articles about the selected person -->
 <div class="row container-fluid" style="width: 100%">
     <figure style="float: left">
         <img src="/data/{mug}" title="{who}" style="float: left"

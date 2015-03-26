@@ -1,3 +1,4 @@
+<!-- View people sorted by number of articles about them -->
 <div class="row container-fluid" style="width: 100%">
     {peoplelist}
     <a href="/numofarticles/articles/{who}" class="span2 btn" style="width: 93%">

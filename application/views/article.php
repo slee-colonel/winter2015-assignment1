@@ -1,3 +1,4 @@
+<!-- View a single article selected by database ID -->
 <div class="row container-fluid">
     {article}
     <div class="btn" style="width: 99%">

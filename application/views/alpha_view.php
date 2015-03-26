@@ -1,3 +1,4 @@
+<!-- View people sorted by first name alphabetical order -->
 <div class="row container-fluid" style="width: 100%">
     {peoplelist}
     <a href="/alphabetical/articles/{who}" class="span2 btn" style="width: 93%">

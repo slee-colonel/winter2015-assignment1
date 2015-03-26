@@ -1,3 +1,5 @@
+<!-- The table for people in the database, editable. -->
+<!-- Mugshot-uploading page is accessed from this page -->
 <div class="row container-fluid" style="width: 100%">
     <h2>People</h2>
     <table cols="3" class="table" >
@@ -22,6 +24,7 @@
     <a class="right" href='/admin/upload_picture/1'>Upload a mugshot</a>
 </div>
 
+<!-- The table for articles in the database, editable -->
 <div class="row container-fluid" style="width: 100%">
     <h2>Articles</h2>
     <table cols="3" class="table">

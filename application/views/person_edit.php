@@ -1,3 +1,4 @@
+<!-- Page that edits the information of a person. ID untouched. -->
 <div class="row container-fluid">
     <form action="/admin/confirm_person" method="post">
         {fid}

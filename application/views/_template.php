@@ -2,10 +2,11 @@
 if (!defined('APPPATH'))
     exit('No direct script access allowed');
 /**
- * views/template.php
+ * views/_template.php
  *
- * Pass in $pagetitle (which will in turn be passed along)
- * and $pagebody, the name of the content view.
+ * Pass in page title (which will in turn be passed along),
+ * menu bar, and content (the page selected by my controllers).
+ * The JS for TinyMCE rich text editor is added here.
  *
  * ------------------------------------------------------------------------
  */

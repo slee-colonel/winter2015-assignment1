@@ -1,3 +1,5 @@
+<!-- Home page, shows the contents of the latest article, and the list
+of articles ordered by newest to oldest -->
 <div class="row container-fluid">
     <div>
         <a href="/viewer/article/{id}" class="span4 btn" style="width: 55%"> <!--change to list of articles-->             

@@ -1,3 +1,4 @@
+<!-- View people sorted by the amount of court fees they incurred -->
 <div class="row container-fluid" style="width: 100%">
     {peoplelist}
     <a href="/courtfees/articles/{who}" class="span2 btn" style="width: 93%">

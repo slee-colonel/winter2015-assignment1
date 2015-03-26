@@ -1,3 +1,4 @@
+<!-- A simple page that uploads a picture -->
 <div class="form">
     <form enctype="multipart/form-data" action="/admin/upload_picture/0" method="POST">
         <b>Choose a mugshot to upload:</b><br />
