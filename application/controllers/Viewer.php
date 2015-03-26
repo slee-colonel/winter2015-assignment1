@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Display one or all of the quotes on file.
+ * Displays one article, including the related mugshot.
  * 
  * controllers/Viewer.php
  *
- * ------------------------------------------------------------------------
+ * @author Sanders Lee
  */
 class Viewer extends Application {
 
@@ -14,20 +14,18 @@ class Viewer extends Application {
 	parent::__construct();
     }
 
-    //-------------------------------------------------------------
-    //  The normal pages
-    //-------------------------------------------------------------
-
+    // You don't really want to see this page since no article was selected
     function index()
     {
-	$this->data['pagebody'] = 'homepage';    // this is the view we want shown
+	$this->data['pagebody'] = 'homepage';
 	$this->render();
     }
 
-    // method to display just a single article
+    // This displays a single article by ID in database, mugshot
+    // also included from single_article();
     function article($id)
     {
-        $this->data['pagebody'] = 'article';    // this is the view we want shown
+        $this->data['pagebody'] = 'article';
         $this->data['article'] = $this->articles->single_article($id);
         
 	$this->render();

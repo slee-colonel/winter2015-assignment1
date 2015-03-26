@@ -79,7 +79,8 @@ class Articles extends MY_Model {
         return $owed;
     }
     
-    // Return a single article, given the article ID
+    // Return a single article, including the related mugshot,
+    // given the article ID
     function single_article($id){
         
         $this->db->from($this->_tableName);

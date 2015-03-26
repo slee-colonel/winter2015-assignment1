@@ -1,11 +1,13 @@
 <?php
 
 /**
- * Our homepage. Show the most recently added quote.
+ * My homepage. Shows the entirety of the most recently added article.
+ * The other articles are listed on the side, sorted by reverse order 
+ * of when each was added.
  * 
  * controllers/Welcome.php
  *
- * ------------------------------------------------------------------------
+ * @author Sanders Lee
  */
 class Welcome extends Application {
 
@@ -14,22 +16,20 @@ class Welcome extends Application {
 	parent::__construct();
     }
 
-    //-------------------------------------------------------------
-    //  The normal pages
-    //-------------------------------------------------------------
-
+    // Main page function
     function index()
     {
 	$this->data['pagebody'] = 'homepage';
         
-        // list all articles by most recent first
-	$this->data['articlelist'] = $this->articles->invert_all();  // added invertall function to MY_Model
+        // get all articles by most recent first
+	$this->data['articlelist'] = $this->articles->invert_all();
         foreach ($this->data['articlelist'] as $row)
         {
+            // get a mugshot for each article from the people model
             $row->mug = $this->people->some('who', $row->who)[0]->mug;
         }
         
-        // get the choice of homepage person, by most recent article
+        // get the choice of homepage person, by most recently added article
         // (last ID in articles table)
         $choice = $this->articles->highest();
         $this->data['id'] = $choice;
@@ -38,6 +38,7 @@ class Welcome extends Application {
         $this->data['owed'] = $this->articles->get($choice)->owed;
         $this->data['articletext'] = $this->articles->get($choice)->text;
         
+        // get the mugshot of the starring person from the people model
         $this->data['mug'] = 
             $this->people->some('who', $this->data['who'])[0]->mug;
         

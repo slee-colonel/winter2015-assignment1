@@ -1,11 +1,22 @@
 <?php
 
 /* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Displays the list of people sorted by descending amount of court fees owed.
+ * 
+ * controllers/Courtfees.php
+ * 
+ * @author Sanders Lee
  */
+
 class Courtfees extends Application {
+    
+    function __construct()
+    {
+	parent::__construct();
+    }
+    
+    // The '2nd level' function of the website.
+    // Shows the list of people sorted by descending amount of court fees owed.
     function index() {
         $this->data['pagebody'] = 'fee_view';
         $this->data['peoplelist'] = $this->people->by_amount_owed();
@@ -16,6 +27,9 @@ class Courtfees extends Application {
         $this->render();
     }
     
+    // The '3rd level' function of the website.
+    // Shows the list of articles about a person sorted by descending amount
+    // of court fees owed in each case.
     function articles($who) {
         $this->data['pagebody'] = 'article_list';
         $this->data['who'] = $who;

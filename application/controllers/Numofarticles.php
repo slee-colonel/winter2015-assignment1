@@ -1,12 +1,23 @@
 <?php
 
 /* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Displays the list of people sorted by number of articles about them.
+ * 
+ * controllers/Numofarticles.php
+ * 
+ * @author Sanders Lee
  */
 
 class Numofarticles extends Application {
+    
+    function __construct()
+    {
+	parent::__construct();
+    }
+    
+    // The '2nd level' function of the website.
+    // Shows the list of people sorted by descending number of articles about 
+    // them.
     function index() {
         $this->data['pagebody'] = 'article_count_view';
         $this->data['peoplelist'] = $this->people->by_article_count();
@@ -19,6 +30,8 @@ class Numofarticles extends Application {
         $this->render();
     }
     
+    // The '3rd level' function of the website.
+    // Shows the list of articles about a person sorted by most recently added.
     function articles($who) {        
         $this->data['pagebody'] = 'article_list';
         $this->data['who'] = $who;

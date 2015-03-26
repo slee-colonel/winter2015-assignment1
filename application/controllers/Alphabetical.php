@@ -1,11 +1,22 @@
 <?php
 
 /* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Displays the list of people sorted by alphabetical order.
+ * 
+ * controllers/Alphabetical.php
+ * 
+ * @author Sanders Lee
  */
+
 class Alphabetical extends Application {
+        
+    function __construct()
+    {
+	parent::__construct();
+    }
+    
+    // The '2nd level' function of the website.
+    // Shows the list of people sorted by alphabetical order.
     function index() {
         $this->data['pagebody'] = 'alpha_view';
         $this->data['peoplelist'] = $this->people->alphabetical();
@@ -19,6 +30,9 @@ class Alphabetical extends Application {
         $this->render();
     }
     
+    // The '3rd level' function of the website.
+    // Shows the list of articles about a person sorted by alphabetical order
+    // of the article titles.
     function articles($who) {
         $this->data['pagebody'] = 'article_list';
         $this->data['who'] = $who;

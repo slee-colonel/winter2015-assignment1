@@ -1,5 +1,13 @@
 <?php
 
+/* 
+ * The editor controller for people, articles, and mugshot uploads.
+ * 
+ * controllers/Admin.php
+ * 
+ * @author Sanders Lee
+ */
+
 class Admin extends Application {
 
     function __construct() {
@@ -7,6 +15,8 @@ class Admin extends Application {
         $this->load->helper(array('formfields','form','url','file'));        
     }
 
+    // The main page, '2nd level' of website.
+    // Loads all people and articles in the database for display
     function index() {
         $this->data['title'] = 'The Rich People List Maintenance';
         $this->data['people'] = $this->people->all();
@@ -15,24 +25,30 @@ class Admin extends Application {
         $this->render();
     }
     
+    // Tells present_person() that we want to add a new person
     function add_person(){
         $person = $this->people->create();
         $this->present_person($person);
     }
     
+    // Tells present_person() that we want to edit a person,
+    // given their database ID
     function edit_person($id){
         $person = $this->people->get($id);
         $this->present_person($person);
     }
     
-    // works with person_edit.php
+    // Works with person_edit.php, '3rd level' of website.
+    // Loads in previously saved person data and puts them in the fields in
+    // person_edit.php if in edit mode. Otherwise, shows empty fields in add
+    // mode.
     function present_person($person){
         $this->data['pagebody'] = 'person_edit';
         $this->data['fid'] = makeTextField('ID#', 'id', $person->id, 
             "Unique quote identifier, system-assigned", 10, 10, true); 
         $this->data['fwho'] = makeTextField('Name', 'who', $person->who);
         
-        //load dropdown mug options
+        //load dropdown mugshot options
         $filenames = get_filenames('data/');
         foreach ($filenames as $file){
             $record[$file] = $file;
@@ -46,7 +62,8 @@ class Admin extends Application {
         $this->render();
     }
     
-    // process a person add or edit edit
+    // Process a person add or person edit.
+    // After validation, saves the data to the people database in either mode.
     function confirm_person(){
         // create a blank record
         $record = $this->people->create();
@@ -56,6 +73,7 @@ class Admin extends Application {
         $record->who = $this->input->post('who');
         $record->mug = $this->input->post('mug');
         echo $record->mug;
+        
         // validation
         if (empty($record->who))
             $this->errors[] = 'You must specify a name.';
@@ -77,6 +95,10 @@ class Admin extends Application {
         redirect('/admin');
     }
     
+    // Works with person_delete.php
+    // Loads in previously saved data and puts them in the fields in
+    // person_delete.php. This shows information about the person to be deleted.
+    // The admin must press the confirm button to complete deletion.
     function delete_person($id){
         $this->data['pagebody'] = 'person_delete';
         
@@ -95,22 +117,30 @@ class Admin extends Application {
         $this->render();
     }
     
+    // Deletes the person after admin presses confirm button.
     function confirm_person_deletion(){
         $id = $this->input->post('id');
         $this->people->delete($id);        
         redirect('/admin');
     }
     
+    // Tells present_article() that we want to add a new article
     function add_article(){
         $article = $this->articles->create();
         $this->present_article($article);
     }
     
+    // Tells present_article() that we want to edit an article,
+    // given its database ID
     function edit_article($id){
         $article = $this->articles->get($id);
         $this->present_article($article);
     }
     
+    // Works with article_edit.php, '3rd level' of website.
+    // Loads in previously saved article data and puts them in the fields in
+    // article_edit.php if in edit mode. Otherwise, shows empty fields in add
+    // mode.
     function present_article($article){
         $this->data['pagebody'] = 'article_edit';
         $this->data['fid'] = makeTextField('ID#', 'id', $article->id, 
@@ -128,6 +158,8 @@ class Admin extends Application {
         $this->render();
     }
     
+    // Process an article add or article edit.
+    // After validation, saves the data to the articles database in either mode.
     function confirm_article(){
         // create a blank record
         $record = $this->articles->create();
@@ -164,6 +196,10 @@ class Admin extends Application {
         redirect('/admin');
     }
     
+    // Works with article_delete.php
+    // Loads in previously saved data and puts them in the fields in
+    // article_delete.php. This shows information about the person to be 
+    // deleted. The admin must press the confirm button to complete deletion.
     function delete_article($id){
         $this->data['pagebody'] = 'article_delete';
         
@@ -186,12 +222,16 @@ class Admin extends Application {
         $this->render();
     }
     
+    // Deletes the article after admin presses confirm button.
     function confirm_article_deletion(){
         $id = $this->input->post('id');
         $this->articles->delete($id);        
         redirect('/admin');
     }
     
+    // Works with picture_upload.php, '3rd level' of website.
+    // Validates the picture file the user has selected before uploading to the
+    // website's data folder.
     function upload_picture($first_attempt){
         $config['upload_path'] = './data/';
         $config['allowed_types'] = '*'; //file type detection doesn't work in CI
@@ -234,6 +274,7 @@ class Admin extends Application {
         $this->render();
     }
     
+    // Check that the file has an acceptable image type extension
     function allow_file_type($ext){
         if ($ext == '.jpg' || $ext == '.png' || $ext == '.gif')
             return true;
