@@ -1,10 +1,10 @@
 <?php
 
 /**
- * This is a "CMS" model for quotes, but with bogus hard-coded data.
- * This would be considered a "mock database" model.
- *
- * @author jim
+ * This is model for rich people and their mugshot file names.
+ * People sorting functions are implemented here.
+ * 
+ * @author Sanders Lee
  */
 class People extends MY_Model {
 
@@ -13,7 +13,7 @@ class People extends MY_Model {
        parent::__construct('people', 'id');	
     }
     
-    // Return all rich people in alphabetical order
+    // Return all rich people in first-name-last-name alphabetical order
     function alphabetical() {
         $query = $this->db->from($this->_tableName);
         $this->db->order_by('who','asc');
@@ -21,6 +21,7 @@ class People extends MY_Model {
         return $query->result();
     }
     
+    // Return all rich people sorted by descending amount of court fees owed
     function by_amount_owed() {
         $query = $this->db->from($this->_tableName);
         $query = $this->db->get();
@@ -49,6 +50,7 @@ class People extends MY_Model {
         return $result;
     }
     
+    // Return all rich people sorted by descending number of articles about them
     function by_article_count() {
         $query = $this->db->from($this->_tableName);
         $query = $this->db->get();
@@ -77,6 +79,7 @@ class People extends MY_Model {
         return $result;
     }
     
+    // Return the mugshot file path of a person
     function get_mug($who){
         if ($this->people->some('who',$who) != NULL)
             return $this->people->some('who', $who)[0]->mug;
